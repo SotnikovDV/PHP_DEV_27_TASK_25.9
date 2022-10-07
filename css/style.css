@@ -1,0 +1,433 @@
+* {
+  box-sizing: border-box;
+  margin: auto;
+}
+
+body {
+  line-height: 1.2;
+  color: #dd9a0a  !important;
+  font-family: 'Roboto' !important;
+  font-size: 100% !important;
+  background-color: #1d1c1c !important;
+  /*background-position: 0 100% !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  */
+  background-repeat: repeat !important;
+  background-image: url(../images/bg5.jpg) !important;
+  
+}
+
+main {
+  max-width: 1600px;
+  margin: 20px auto;
+}
+/* ------------- Верхнее меню ------------ */
+.topnav {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto max-content 50px;
+  grid-template-rows: 30px;
+  padding: 3px;
+  margin: 0;
+  color: #dd9a0a !important;
+  background-color: #3a322c;;
+  font-family: 'Roboto', sans-serif;
+}
+
+.page_title {
+  font-size: large;
+  font-weight: 600;
+}
+
+.topnav a {
+  float: right;
+  display: block;
+  color: #c4cc87;
+  text-align: right;
+  padding: 2px 16px;
+  text-decoration: none;
+}
+
+.user_name {
+  display: block;
+  float: right;
+  min-width: min-content;
+}
+
+.topnav a:hover {
+  background-color: rgb(90, 86, 86);
+  color: #d6ee25;
+}
+
+.top_menu_btn {
+  display: block;
+  float: right;
+  margin: 1px 1px;
+}
+
+.dropbtn {
+  display: block;
+  float: left;
+  margin: 3px auto;
+  padding: 0;
+  background: black;
+}
+
+.barbtn {
+  cursor: pointer;
+}
+
+.dropbtn:hover {
+  background-color: #e3c7fa38;
+  color: black;
+}
+
+/* --------- Выпадающее меню (скрыто по умолчанию) ----------- */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 3px;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.356);
+  z-index: 1;
+  padding: 20px 3px 10px 20px;
+  margin: 2px;
+  font-family: 'Roboto', sans-serif;
+  border: #0a0a0a 1px solid;
+  border-radius: 5px;
+}
+
+/* на мальненьких экранах уменьшаем прозрачность, т.к. меню поверх текста */
+@media (max-width: 768px) {
+  .dropdown-content {
+      background-color: #302e2ddd;
+  }
+}
+
+@media (min-width: 769px) {
+  .dropdown-content {
+      background-color: #302e2ddd;
+  }
+}
+
+/* с помощью JS,добавляем этот класс к .dropdown-content, когда пользователь нажимает на кнопку выпадающего списка */
+.show {
+  display: block;
+}
+
+.widget-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #eeba49;
+  font-size: 16px;
+  padding-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-left: 2px solid #eec366;
+}
+
+.widget-list {
+  padding: 5px;
+  list-style: none;
+}
+
+.dropdown-content p {
+  padding: 10px;
+}
+
+.widget-list a:before {
+  content: "\2014";
+  margin-right: 14px;
+}
+
+.widget-list a {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  padding: 6px 0;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #c4cc87;
+  transition: all 0.3s ease;
+}
+
+.widget-list a:hover {
+  color: #d6ee25;
+  /*#dd9a0a;*/
+  padding-left: 15px;
+  font-size: 17 px;
+  font-weight: 700;
+}
+
+.widget-list a:hover::before {
+  content: "+ ";
+}
+
+/* -------------------- Разметка страницы ------------- */
+.mainrow {
+  padding: 5px 20px;
+}
+
+.contentbox {
+  float: left;
+  width: 80%;
+}
+
+.rightcolumn {
+  display:flexbox;
+  float: left;
+  width: 20%;
+  padding: 10px;
+  /*margin-left: 10px;*/
+}
+.card {
+  margin-top: 20px;
+  padding: 10px;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+  background-color: #615e5c;
+  /*box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.356);*/
+  box-shadow: 0px 8px 18px 0px rgb(0 0 0 / 50%);
+  font-family: 'Roboto', sans-serif;
+  border: #946c15 1px solid;
+  }
+
+.card-title {
+  background-color: #eeba49;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 16pt;
+  color: #333;
+  padding: 7px 0 7px 20px;
+  width: 100%;
+}
+
+.card-content{
+  color: #dd9a0a;
+  text-decoration: none;
+  text-align: left;
+  font-size: 11pt;
+  padding-left: 10px;
+  margin: 0 auto 0 0  ;
+}
+
+.card-content-list {
+  list-style: none;
+  line-height: 1.5; 
+  padding-left: 0;
+  
+}
+
+.card-content a {
+  color: #dd9a0a;
+  text-decoration: none;
+}  
+
+.card-content a:hover {
+  color: #d6ee25;
+  text-decoration: none;
+}  
+
+.card-content a:hover::before {
+  content: "+ ";
+}
+
+@media screen and (max-width: 800px) {
+  .contentbox, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* ------------------------ Галерея ------------------- */
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+  height: 750px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  max-height: 710px;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+  height: 40px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.2%;
+  margin: 0 0.2%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+/* ----------------- Форма регистрация/Входа ---------------- */
+.input-box {
+  display: block;
+  background-color: #3a322c;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.356);
+  padding: 0;
+  margin: 100px auto;
+  font-family: 'Roboto', sans-serif;
+  border: #946c15 1px solid;
+  border-radius: 5px;
+  max-width: 480px;
+}
+
+.file-box {
+  max-width: 680px;
+}
+
+.profile-box {
+  max-width: 680px;
+}
+
+.login-box-title {
+  background-color: #d3a032;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 18pt;
+  color: #333;
+  padding: 7px 0 7px 20px;
+}
+
+.login-box-note {
+  margin: 0;
+  padding: 20px 20px;
+  vertical-align: bottom;
+  font-size: 90%;
+  text-align: center;
+  color: #c4cc87;
+  
+}
+
+.login-box-note>a {
+  color: #dd9a0a;
+  text-decoration: none;
+}
+
+.login-box-note>a:hover {
+  color: #d6ee25;
+  text-decoration: none;
+}
+
+.login-box-error {
+  margin: 0;
+  padding: 20px 20px;
+  vertical-align: bottom;
+  font-size: 110%;
+  text-align: center;
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  ;
+}
+
+.login-form {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  grid-auto-rows: 60px;
+  padding: 20px 20px 10px 40px;
+  margin: auto;
+  border-top: 1px solid #9b501a;
+}
+
+.login-form>.inpt {
+  width: 90%;
+  background-color: #fff;
+  border: 1px solid #b5b5b5;
+  color: #666;
+  height: 28px;
+  line-height: 28px;
+  margin: 0;
+  padding: 0 10px;
+  font-size: 100%;
+}
+
+.login-form>label {
+  margin: 0;
+  width: 90%;
+  padding: 10px 0;
+  vertical-align: bottom;
+  font-size: 95%;
+  color: #dd9a0a;
+}
+
+.login-form>.btn {
+  padding: 7px 5px;
+  margin: auto;
+  border: 1px solid #946c15;
+  cursor: pointer;
+  font-size: 12pt;
+  width: 110px;
+  color: #000;
+  background-color: #ad9164;
+  border-radius: 3px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
+}
