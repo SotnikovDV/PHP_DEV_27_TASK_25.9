@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
         <label for="files">Выберите фотографии для загрузки:</label>
         <input type="file" name="files[]" id="file-drop" multiple required accept=".jpg, .jpeg, .png, .tiff">
         <label for="title">Описание:</label>
-        <input name="title" type="text" placeholder="..." class="inpt">
+        <input name="title" type="text" placeholder="..." class="inpt" autofocus>
         <input name="submit" type="submit" value="Загрузить" class="btn">
         <input name="button" type="button" value="Отмена" onclick="location='/'" class="btn">
     </form>

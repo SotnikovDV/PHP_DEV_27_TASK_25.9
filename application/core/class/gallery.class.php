@@ -336,11 +336,6 @@ class Gallery
 
         $this->lastErrors = [];
 
-        if (empty($comment)) {
-            $this->lastErrors[] = 'Невозможно сохранить пустой комментарий';
-            return false;
-        }
-
         // подключаемся к БД
         $db = new MySQL(Config::DB_SERVER, Config::DB_NAME, Config::DB_USER, Config::DB_PASS);
         if (!$db) {

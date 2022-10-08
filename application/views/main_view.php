@@ -52,11 +52,18 @@ if (!$photos) {
         <div class="card">
             <div class="card-title">Фото</div>
             <div class="card-content">
-                <ul class="card-content-list">
-                    <li><a href="/download">Загрузить фото</a></li>
-                    <li><a href="javascript: deleteSlide();">Удалить фото</a></li>
-                    <li><a href="javascript: doComment('add');">Добавить комментарий</a></li>
-                </ul>
+                <?php 
+                    //echo '<li><b>Добавил '.$photo['username'].'</b></li>';
+                    if ($login) { ?>
+                        <ul class="card-content-list">
+                            <li><a href="/download">Загрузить фото</a></li>
+                            <li><a href="javascript: deleteSlide();">Удалить фото</a></li>
+                            <li><a href="javascript: doComment('add');">Добавить комментарий</a></li>
+                        </ul>
+                <?php } else {
+                    echo '<span><a href="logon">Авторизуйтесь для загрузки фотографий и комментариев</a>';
+                }
+                ?>        
             </div>
         </div>
         <div class="card">
@@ -69,15 +76,19 @@ if (!$photos) {
             foreach ($comments as $coment) {
                 echo '<div class="card-comment photo'.$coment['image'].'" id=com' . $coment['id'] . '>';
                 echo '<p><img src="/images/avatar.png" alt="Avatar" style="width:30px">';
-                echo ' <span>' . $coment['username'] . '</span>';
-                echo '<a href="/comment?pid='.$coment['image'].'&action=delete&id='.$coment['id'].'" class="card-comment-btn"> X </a>';
+                echo ' <span style="margin-left: 5px;"><b>' . $coment['username'] . '</b></span>';
+                if ($login) { 
+                    echo '<a href="/comment?pid='.$coment['image'].'&action=delete&id='.$coment['id'].'" class="card-comment-btn"> X </a>';
+                }
             
-                /*echo '<div class="top_menu_btn">';
-                echo '<a id="btnLink" href="javascript:void(0);" class="dropbtn barbtn">';
-                echo '<i class="fa fa-bars barbtn"></i></a></div>';*/
-
                 echo '</p>';
-                echo '<p><a href="/comment?pid='.$coment['image'].'&action=edit&id='.$coment['id'].'">' . $coment['comment'] . '</a></p>';
+                echo '<p>';
+                if ($login) {
+                    echo '<a href="/comment?pid='.$coment['image'].'&action=edit&id='.$coment['id'].'">' . $coment['comment'] . '</a>';
+                } else {
+                    echo $coment['comment'];
+                }
+                echo '</p>';
                 echo '<hr>';
                 echo '</div>';
                 

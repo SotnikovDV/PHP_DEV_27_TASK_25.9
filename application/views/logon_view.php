@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
     ?>
     <form action="logon" method="post" class="login-form">
         <label for="login">Имя пользователя:</label>
-        <input name="login" type="text" placeholder="..." class="inpt" required>
+        <input name="login" type="text" placeholder="..." class="inpt" required autofocus>
         <label for="password">Пароль:</label>
         <input name="password" type="password" placeholder="..." class="inpt" required>
         <!-- <span></span><div style="margin: 0; font-size: smaller;"><input class="inpt" type="checkbox" onclick="showPassword('password');">  Показать пароль</div> -->

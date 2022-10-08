@@ -21,7 +21,7 @@
         session_start();
         $user = new User();
         $gallery = new Gallery;
-        
+
         //$usr = $user->addUser('DVS1234', '123456','');
 
         //$usr = $user->logon('DVS1234', '123456');
@@ -42,7 +42,7 @@
                         if (!$login) {
                             echo '"/logon">Войти';
                         } else {
-                            echo '"/profile">' . $login;
+                            echo '"/">' . $login;
                         }
                         ?> </a>
             </div>
@@ -56,18 +56,24 @@
             <h3 class="widget-title">Галерея</h3>
             <ul class="widget-list">
                 <li><a href="/">Главная</a></li>
-                <li><a href="/download">Загрузить фото</a></li>
+                <?php 
+                    if ($login) {
+                    echo '<li><a href="/download">Загрузить фото</a></li>';
+                    }
+                ?>    
             </ul>
             <p></p>
             <h3 class="widget-title">Авторизация</h3>
             <ul class="widget-list">
-                <?php if ($login) { ?>
-                    <li><a href="/profile">Ваш профиль</a></li>
-                    <li><a href="/logoff">Выйти</a></li>
-                <?php } else { ?>
-                    <li><a href="/logon">Войти</a></li>
-                    <li><a href="/register">Войти</a></li>
-                <?php } ?>
+                <?php 
+                    if ($login) { 
+                        echo '<li><a href="/profile">Ваш профиль</a></li>';
+                        echo '<li><a href="/logoff">Выйти</a></li>';
+                    } else { 
+                        echo '<li><a href="/logon">Войти</a></li>';
+                        echo '<li><a href="/register">Регистрация</a></li>';
+                    } 
+                 ?>
             </ul>
         </div>
     </header>

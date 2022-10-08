@@ -1,35 +1,45 @@
 <?php
+    $errors = [];
 /* ------------------------ Обработка формы ------------------ */
 if (isset($_POST['submit'])) {
-    $errors = [];
-    
-    $action = $_POST['action'];
+
+    $mode = 0;
+    $action = $_POST['act'];
     $pid = $_POST['pid'];
     $id = $_POST['id'];
     $comment = $_POST['comment'];
-
+    
     switch ($action) {
-        case 'add': 
+        case 'add':
             $result = $gallery->addComment($pid, $comment, $user->user_id);
-            if (!$result){
+            if (!$result) {
                 $error[] = 'Ошибка добавления комментария в базу данных: ' . implode($gallery->lastErrors);
             }
             $title = 'Добавление ';
-                $btn   = 'Добавить';
-        case 'edit':    
-            $result = $gallery->editComment($pid, $comment);
-            if (!$result){
+            $title2 = 'добавлен';
+            $btn   = 'Добавить';
+            $text = $comment;
+            break;
+        case 'edit':
+            $result = $gallery->editComment($id, $comment);
+            if (!$result) {
                 $error[] = 'Ошибка сохранения комментария в базу данных: ' . implode($gallery->lastErrors);
             }
             $title = 'Исправление';
-                $text = null;
+            $title2 = 'исправлен';
+            $text = $comment;
+            $btn   = 'Сохранить';
+            break;
         case 'delete':
-            $result = $gallery->deleteComment($pid);
-            if (!$result){
+            $result = $gallery->deleteComment($id);
+            if (!$result) {
                 $error[] = 'Ошибка удаления комментария из базы данных: ' . implode($gallery->lastErrors);
             }
             $title = 'Удаление';
-                $text = null;
+            $title2 = 'удален';
+            $text = $comment;
+            $btn   = 'Удалить';
+            break;
     }
 
     if (count($errors) > 0) {
@@ -37,8 +47,8 @@ if (isset($_POST['submit'])) {
         echo '<div class="input-box file-box">';
         echo '<div class="login-box-title file-box">При добавлении/изменении/удалении комментария произошли следующие ошибки:</div><br>';
         echo '<div class="login-box-note" style="text-align: left;">';
-        foreach ($errors as $error){
-            echo $error.'<br>';
+        foreach ($errors as $error) {
+            echo $error . '<br>';
         }
         echo '</div>';
         echo '</div>';
@@ -46,14 +56,14 @@ if (isset($_POST['submit'])) {
         //header("Location: /");
         //exit();
         echo '<div class="input-box file-box">';
-        echo '<div class="login-box-title file-box">Комментарий успешно добавлен/изменен</div><br>';
-        echo '<div class="login-box-note">Вы можете добавить/изменить еще комментарий или <a href="/">перейти в галерею</a></div>';
+        echo '<div class="login-box-title file-box">Комментарий успешно '.$title2.'</div><br>';
+        echo '<div class="login-box-note"><a href="/">Перейти в галерею</a></div>';
         echo '</div>';
-
     }
 } else {
     /* ------------------------ Обработка параметров GET ------------------ */
     if (key_exists('action', $_GET)) {
+        $mode = 1;
         $action = $_GET['action'];
         $pid = $_GET['pid'];
 
@@ -80,11 +90,10 @@ if (isset($_POST['submit'])) {
                 $btn   = 'Сохранить';
                 break;
         }
-    } 
-        
-
-
+    }
 }
+//if ($action !== 'delete') {
+    if (($mode === 1) or ($action !== 'delete')) {    
 ?>
 <div class="input-box file-box">
     <div class="login-box-title"><?= $title ?> комментария</div>
@@ -92,31 +101,35 @@ if (isset($_POST['submit'])) {
     if (key_exists('error', $_REQUEST)) {
     ?>
         <div class="login-box-error">Ошибка комментирования. Попробуйте еще раз</div>
-    <?php
+        <?php
     } else {
-        $photo = $gallery->getPhotoByID($pid);
+            $photo = $gallery->getPhotoByID($pid);
         echo '<div class="login-box-note">';
         echo '<img class="demo cursor" src="' . Config::PHOTO_DIR . '/' . $photo['id'] . '.' . $photo['type'] . '" style="width:90%" alt="' . $photo['title'] . '">';
         echo '</div>';
-        if ($action !== 'delete'){
-?>
+        if ($action !== 'delete') {
+        ?>
 
-        <div class="login-box-note">
-            Максимальный размер комментария: <b><?= Config::MAX_COMMENT_SIZE ?> символов</b><br>
-        </div>
+            <div class="login-box-note">
+                Максимальный размер комментария: <b><?= Config::MAX_COMMENT_SIZE ?> символов</b><br>
+            </div>
 
     <?php
         }
-    }
+
     ?>
     <form action="comment" method="post" class="login-form">
-        <input type="hidden" name="action" value="<?=$action?>">
-        <input type="hidden" name="pid" value="<?=$pid?>">
-        <input type="hidden" name="id" value="<?=$id?>">
+        <input type="hidden" name="act" value="<?= $action ?>">
+        <input type="hidden" name="pid" value="<?= $pid ?>">
+        <input type="hidden" name="id" value="<?= $id ?>">
         <label for="comment">Комментарий:</label>
-        <input name="comment" type="text" placeholder="..." class="inpt" value="<?=$text?>">
+        <input name="comment" type="text" placeholder="..." class="inpt" value="<?= $text ?>" required autofocus>
         <!-- <p><textarea name="comment" cols="40" rows="3" class="inpt"></textarea></p> -->
-        <input name="submit" type="submit" value="<?=$btn?>" class="btn">
+        <input name="submit" type="submit" value="<?= $btn ?>" class="btn">
         <input name="button" type="button" value="Отмена" onclick="location='/'" class="btn">
     </form>
+    <?php
+    }
+}
+    ?>
 </div>

@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
     ?>
     <form action="register" method="post" class="login-form">
         <label for="login">Имя пользователя:</label>
-        <input name="login" type="text" placeholder="..." class="inpt" value="<?= (key_exists('login', $_REQUEST)) ? $_REQUEST['login'] : null ?>" required>
+        <input name="login" type="text" placeholder="..." class="inpt" value="<?= (key_exists('login', $_REQUEST)) ? $_REQUEST['login'] : null ?>" required autofocus>
         <label for="password">Пароль:</label>
         <input name="password" type="password" placeholder="..." class="inpt" required>
         <label for="password2">Повторите пароль:</label>

@@ -13,7 +13,10 @@ Developed as a practical task in the course "PHP Developer"
 
 # Complete:
 
-1. 
+1. MVC structure was created
+2. Add logon and register
+3. Add function to upload and delete photos
+4. Added the ability to comment
 
 ## 2. Use
 
