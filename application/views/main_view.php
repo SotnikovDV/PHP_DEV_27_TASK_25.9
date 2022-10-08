@@ -49,7 +49,7 @@ if (!$photos) {
         </div>
     </div>
     <div class="rightcolumn">
-    <div class="card">
+        <div class="card">
             <div class="card-title">Фото</div>
             <div class="card-content">
                 <ul class="card-content-list">
@@ -61,9 +61,30 @@ if (!$photos) {
         </div>
         <div class="card">
             <div class="card-title">Комментарии</div>
-            <div class="card-content">
-                Бла-бла-бла. Это комментарии к фотографии
-            </div>
+
+            <?php
+            // считываем комментарии
+            $comments = $gallery->getComments(false);  // без принудительного обновления
+            $i = 1;
+            foreach ($comments as $coment) {
+                echo '<div class="card-comment photo'.$coment['image'].'" id=com' . $coment['id'] . '>';
+                echo '<p><img src="/images/avatar.png" alt="Avatar" style="width:30px">';
+                echo ' <span>' . $coment['username'] . '</span>';
+                echo '<a href="/comment?pid='.$coment['image'].'&action=delete&id='.$coment['id'].'" class="card-comment-btn"> X </a>';
+            
+                /*echo '<div class="top_menu_btn">';
+                echo '<a id="btnLink" href="javascript:void(0);" class="dropbtn barbtn">';
+                echo '<i class="fa fa-bars barbtn"></i></a></div>';*/
+
+                echo '</p>';
+                echo '<p><a href="/comment?pid='.$coment['image'].'&action=edit&id='.$coment['id'].'">' . $coment['comment'] . '</a></p>';
+                echo '<hr>';
+                echo '</div>';
+                
+                $i++;
+            }
+            ?>
+
         </div>
     </div>
 </div>

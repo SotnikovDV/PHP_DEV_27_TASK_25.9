@@ -17,9 +17,7 @@ Developed as a practical task in the course "PHP Developer"
 
 ## 2. Use
 
-1. Load all files and put it in server root. 
-2. Import gallery.sql to MySQL database
-3. Go to index.php
+Load all files and put it in server root. Go to index.php
 
 ***
 
