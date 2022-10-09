@@ -79,7 +79,7 @@ CREATE TABLE `users` (
 
 insert  into `users`(`id`,`login`,`password`,`hash`,`email`,`ip`) values 
 (4,'DVS1234','$2y$10$qzHf8zEpI5Y3LMtVZrdaBe.QuphIvySCxknB5bXI93oJl3nF3jEb6','JYEuZY','','::1'),
-(8,'DVS12345','$2y$10$l1AJr6Ye47LlLaJ.PAghFOplc5A.9SLvsUS1gT5aTXKym9n7MQHu.','9MRbzm','','::1');
+(9,'DVS12345','$2y$10$l1AJr6Ye47LlLaJ.PAghFOplc5A.9SLvsUS1gT5aTXKym9n7MQHu.','9MRbzm','','::1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
