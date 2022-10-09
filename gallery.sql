@@ -79,11 +79,7 @@ CREATE TABLE `users` (
 
 insert  into `users`(`id`,`login`,`password`,`hash`,`email`,`ip`) values 
 (4,'DVS1234','$2y$10$qzHf8zEpI5Y3LMtVZrdaBe.QuphIvySCxknB5bXI93oJl3nF3jEb6','JYEuZY','','::1'),
-(8,'DVS12345','$2y$10$l1AJr6Ye47LlLaJ.PAghFOplc5A.9SLvsUS1gT5aTXKym9n7MQHu.','9MRbzm','','::1'),
-(9,'DVSt','$2y$10$9MqdtqvCjMT2Ku1LCs6vFecw8OP6NPVqwMrICoF80XUGo.g70Pd/e','2XoUxR','life-hack@yandex.ru','::1'),
-(10,'DVSt','$2y$10$JMNYBKd5JAelxZueLBy/vuMYADaHb/lcQJoCg9b5UZN3Nfn268oxy','GLmEZc','','::1'),
-(11,'DVSt','$2y$10$Du0pRLRZ1O87E8lgOwXE8uqsJ7vqaTGnA1BxK20o/0815yjg2hPty','v3nOBM','','::1'),
-(12,'DVSt','$2y$10$a5U8Lf1/du7k.DUkrAy6Ue2gAeEjJnhgPBXHzKd6NwEy9Hu17us1S','6wXfG0','','::1');
+(8,'DVS12345','$2y$10$l1AJr6Ye47LlLaJ.PAghFOplc5A.9SLvsUS1gT5aTXKym9n7MQHu.','9MRbzm','','::1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
