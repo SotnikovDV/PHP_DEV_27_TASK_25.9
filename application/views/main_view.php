@@ -52,49 +52,22 @@ if (!$photos) {
         <div class="card">
             <div class="card-title">Фото</div>
             <div class="card-content">
-                <?php 
-                    //echo '<li><b>Добавил '.$photo['username'].'</b></li>';
-                    if ($login) { ?>
-                        <ul class="card-content-list">
-                            <li><a href="/download">Загрузить фото</a></li>
-                            <li><a href="javascript: deleteSlide();">Удалить фото</a></li>
-                            <li><a href="javascript: doComment('add');">Добавить комментарий</a></li>
-                        </ul>
+                <?php
+                //echo '<li><b>Добавил '.$photo['username'].'</b></li>';
+                if ($login) { ?>
+                    <ul class="card-content-list">
+                        <li><a href="/download">Загрузить фото</a></li>
+                        <li><a href="javascript: deleteSlide();">Удалить фото</a></li>
+                        <li><a href="javascript: doComment('add');">Добавить комментарий</a></li>
+                    </ul>
                 <?php } else {
                     echo '<span><a href="logon">Авторизуйтесь для загрузки фотографий и комментариев</a>';
                 }
-                ?>        
+                ?>
             </div>
         </div>
-        <div class="card">
+        <div id="comments" class="card">
             <div class="card-title">Комментарии</div>
-
-            <?php
-            // считываем комментарии
-            $comments = $gallery->getComments(false);  // без принудительного обновления
-            $i = 1;
-            foreach ($comments as $coment) {
-                echo '<div class="card-comment photo'.$coment['image'].'" id=com' . $coment['id'] . '>';
-                echo '<p><img src="/images/avatar.png" alt="Avatar" style="width:30px">';
-                echo ' <span style="margin-left: 5px;"><b>' . $coment['username'] . '</b></span>';
-                if ($login) { 
-                    echo '<a href="/comment?pid='.$coment['image'].'&action=delete&id='.$coment['id'].'" class="card-comment-btn"> X </a>';
-                }
-            
-                echo '</p>';
-                echo '<p>';
-                if ($login) {
-                    echo '<a href="/comment?pid='.$coment['image'].'&action=edit&id='.$coment['id'].'">' . $coment['comment'] . '</a>';
-                } else {
-                    echo $coment['comment'];
-                }
-                echo '</p>';
-                echo '<hr>';
-                echo '</div>';
-                
-                $i++;
-            }
-            ?>
 
         </div>
     </div>
@@ -102,3 +75,8 @@ if (!$photos) {
 
 
 <script src="/js/slides.js"></script>
+<script>
+    <?php if ($login) echo 'logged = 1;'; ?>
+    showSlides(1);
+</script>
+

@@ -6,4 +6,8 @@ class View
 		include 'application/views/'.$template_view;
 		//echo 'генерация view'.$template_view;
 	}
+	function simple($content_view)
+	{
+		include 'application/views/'.$content_view;
+	}
 }

@@ -82,7 +82,7 @@
         <?php include $content_view; ?>
     </main>
     <script src="/js/script.js"></script>
-
+    
 </body>
 
 </html>

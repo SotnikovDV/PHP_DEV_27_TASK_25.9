@@ -1,5 +1,5 @@
 var slideIndex = 1;
-showSlides(slideIndex);
+var logged = 0;
 
 // Следущее/Предыдущее
 function plusSlides(n) {
@@ -9,6 +9,29 @@ function plusSlides(n) {
 // Показать выбранное фото
 function currentSlide(n) {
   showSlides(slideIndex = n);
+}
+
+function showComments(n) {
+  //document.getElementById("photoID").innerHTML = n;
+
+  var comments = document.querySelectorAll(".card-comment");
+  comments.forEach(function (elem) {
+    elem.parentNode.removeChild(elem);
+  });
+
+  if (!n) {
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var elem = document.getElementById("comments");
+        elem.innerHTML = elem.innerHTML + this.responseText;
+      }
+    }
+    xmlhttp.open("GET", "comment?act=get&pid=" + n + '&login=' + logged, true);
+    xmlhttp.send();
+  }
 }
 
 // Выбор фото
@@ -37,6 +60,7 @@ function showSlides(n) {
   // видимость коментариев
   var comments = document.getElementsByClassName("card-comment");
   var id = slides[slideIndex - 1].id;
+/*  
   for (i = 0; i < comments.length; i++) {
     comments[i].style.display = "none";
   }
@@ -44,8 +68,11 @@ function showSlides(n) {
   for (i = 0; i < comments.length; i++) {
     comments[i].style.display = "block";
   }
+*/
+showComments(id);
 
 }
+
 
 // Удалить фото
 function deleteSlide() {

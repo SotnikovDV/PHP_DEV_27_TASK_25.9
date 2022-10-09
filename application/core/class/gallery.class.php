@@ -239,7 +239,7 @@ class Gallery
         $photoComments = [];
 
         foreach ($coms as $com) {
-            if ($com['image'] = $pid) {
+            if ($com['image'] == $pid) {
                 $photoComments[] = $com;
             }
         }

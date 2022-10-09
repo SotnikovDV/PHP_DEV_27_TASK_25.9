@@ -246,6 +246,7 @@ class User
                     $this->user_ip = $usr['ip'];
 
                     $this->loged = true;
+
                 } else {
                     $this->lastErrors[] = 'Hash или ID пользователя в cookie не совпадают с базой данных';
                     // Удаляем куки
